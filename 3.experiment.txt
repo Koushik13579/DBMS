@@ -1,0 +1,66 @@
+mysql> insert into student values('1234','koushik','M','2005-10-12','998770098');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from student;
++-------+----------+--------+------------+-----------+
+| regno | name     | gender | dob        | mobileno  |
++-------+----------+--------+------------+-----------+
+|  1234 | koushik | M      | 2005-10-12 | 998770098 |
++-------+----------+--------+------------+-----------+
+1 row in set (0.05 sec)
+
+mysql> insert into student values
+    -> ('1233','priya','F','2005-05-29','9900776655');
+ERROR 1264 (22003): Out of range value for column 'mobileno' at row 1
+mysql> insert into student values ('1233','priya','F','2005-05-29','9900776655');
+ERROR 1264 (22003): Out of range value for column 'mobileno' at row 1
+mysql> insert into student values ('1233','priya','F','2005-05-29','990077665');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from student;
++-------+------------+--------+------------+-----------+
+| regno | name       | gender | dob        | mobileno  |
++-------+------------+--------+------------+-----------+
+|  1233 | priya | F      | 2005-05-29 | 990077665 |
+|  1234 | koushik   | M      | 2005-10-12 | 998770098 |
++-------+------------+--------+------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> insert into student values
+    -> ('9955','prabhas','M','1988-12-12','990998990');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student values
+    -> ('5785'mahesh','M','2004-01-11','999889988');
+    '> ;
+    '> select * from student;
+    '> ('9955','prabhas','M','1988-12-12','990998990');
+    '>
+    '> select * from student;
+    '> insert into student values('5785'mahesh','M','2004-01-11','999889988');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mahesh','M','2004-01-11','999889988');
+;
+select * from student;
+('9955','prabhas' at line 2
+mysql> select * from student;
++-------+------------+--------+------------+-----------+
+| regno | name       | gender | dob        | mobileno  |
++-------+------------+--------+------------+-----------+
+|  1233 | priya | F      | 2005-05-29 | 990077665 |
+|  1234 | koushik   | M      | 2005-10-12 | 998770098 |
+|  9955 | prabhas    | M      | 1988-12-12 | 990998990 |
++-------+------------+--------+------------+-----------+
+3 rows in set (0.00 sec)
+mysql> insert into student values('5785','mahesh','M','2004-01-11','999889988');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from student;
++-------+------------+--------+------------+-----------+
+| regno | name       | gender | dob        | mobileno  |
++-------+------------+--------+------------+-----------+
+|  1233 | priya | F      | 2005-05-29 | 990077665 |
+|  1234 | koushik   | M      | 2004-10-12 | 998770098 |
+|  5785 | mahesh     | M      | 2004-01-11 | 999889988 |
+|  9955 | prabhas    | M      | 1988-12-12 | 990998990 |
++-------+------------+--------+------------+-----------+
+4 rows in set (0.00 sec)
