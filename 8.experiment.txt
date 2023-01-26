@@ -1,0 +1,42 @@
+mysql> select * from data;m
++-------+------------+----------------+--------+-----------------+
+| regno | name       | purchaseditem  | amount | trackingstatus  |
++-------+------------+----------------+--------+-----------------+
+|  1922 | koushik    | watch          |   1000 | delivered       |
+|  2178 | mahesh     | belt           |    500 | delivered       |
+|  3130 | lokesh     | bikecover      |   1250 | shipping        |
+|  1290 | somu       | shoes          |    700 | shipping        |
+|  7680 | naveen     | phonecover     |   2000 | delivered       |
+|  8960 | priya      | necklace       |   1700 | shipping        |
++-------+------------+----------------+--------+-----------------+
+6 rows in set (0.00 sec)
+
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'm' at line 1
+mysql> select * from data where regno in(select regno from data where amount>1000);
++-------+-----------+----------------+--------+-----------------+
+| regno | name      | purchased_item | amount | tracking_status |
++-------+-----------+----------------+--------+-----------------+
+|  3130 | lokesh    | bikecover      |   1250 | shipping        |
+|  7680 | naveen    | phonecover     |   2000 | delivered       |
+|  8960 | priya     | necklace       |   1700 | shipping        |
++-------+-----------+----------------+--------+-----------------+
+3 rows in set (0.00 sec)
+mysql> select * from data where regno in(select regno from data where tracking_status='delivered');
++-------+------------+----------------+--------+-----------------+
+| regno | name       | purchased_item | amount | tracking_status |
++-------+------------+----------------+--------+-----------------+
+|  1922 | koushik    | watch          |   1000 | delivered       |
+|  2178 | mahesh     | belt           |    500 | delivered       |
+|  7680 | naveen     | phonecover     |   2000 | delivered       |
++-------+------------+----------------+--------+-----------------+
+3 rows in set (0.00 sec)
+mysql> select name,purchased_item,amount from data where amount>(select avg(amount) from data where amount=data.amount);
++-----------+----------------+--------+
+| name      | purchased_item | amount |
++-----------+----------------+--------+
+| lokesh    | bikecover      |   1250 |
+| naveen    | phonecover     |   2000 |
+| priya     | necklace       |   1700 |
++-----------+----------------+--------+
+3 rows in set (0.01 sec)
