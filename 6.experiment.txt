@@ -1,0 +1,63 @@
+mysql>  select * from student where Regno between 123 and 734;
++-------+------------+--------+------------+-----------+----------+
+| Regno | name       | gender | dob        | mobileno  | emisregno|
++-------+------------+--------+------------+-----------+----------+
+|  123  | priya      | F      | 2005-05-29 | 944565599 | 26346282 |
+|  718  | somu       | M      | 2006-04-05 | 944411718 | 76579543 |
+|  734  | mahesh     | M      | 2010-09-13 | 792738362 | 86363563 |
++-------+------------+--------+------------+-----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from mark where marks between 90 and 98;
++-------+------------+-------+---------+
+| regno | name       | marks | subject |
++-------+------------+-------+---------+
+|  123  | priya      |    90 | maths   |
+|  734  | mahesh     |    98 | maths   |
++-------+------------+-------+---------+
+2 rows in set (0.00 sec)
+mysql> select count(name) from student;
++-------------+
+| count(name) |
++-------------+
+|           4 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(name), regno from student
+    -> group by regno having count(name)>0;
++-------------+-------+
+| count(name) | regno |
++-------------+-------+
+|           1 |  123  |
+|           1 |  718  |
+|           1 |  734  |
+|           1 |  999  |
++-------------+-------+
+4 rows in set (0.00 sec)
+mysql> select avg(marks) from mark
+    -> ;
++------------+
+| avg(marks) |
++------------+
+|    91.0000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(marks) from mark
+    -> ;
++------------+
+| sum(marks) |
++------------+
+|        273 |
++------------+
+1 row in set (0.00 sec)
+mysql> select * from student where gender in ('M');
++-------+-------------+--------+------------+-----------+----------+
+| Regno | name        | gender | dob        | mobileno  | emisregno|
++-------+-------------+--------+------------+-----------+----------+
+|  718  | somu        | M      | 2006-04-05 | 944411718 | 76579543 |
+|  734  | mahesh      | M      | 2010-09-13 | 792738362 | 86363563 |
+|  999  | koushik     | M      | 2004-12-26 | 701388612 | 87465839 |
++-------+-------------+--------+------------+-----------+----------+
+2 rows in set (0.00 sec)
