@@ -1,0 +1,125 @@
+
+mysql> use student;
+Database changed
+mysql> desc student;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| Regno    | int(3)      | NO   | PRI | 0       |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
+| gender   | varchar(1)  | YES  |     | NULL    |       |
+| dob      | date        | YES  |     | NULL    |       |
+| mobileno | int(10)     | YES  |     | NULL    |       |
+| emisregno| int(30)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+6 rows in set (0.03 sec)
+
+mysql> select * from student;
++-------+-------------+--------+------------+-----------+----------+
+| Regno | name        | gender | dob        | mobileno  | emisregno|
++-------+-------------+--------+------------+-----------+----------+
+|  123  | priya       | F      | 2005-05-29 | 944565599 | 26346282 |
+|  718  | somu        | M      | 2006-04-05 | 944411718 | 76579543 |
+|  734  | mahesh      | M      | 2010-09-13 | 792738362 | 86363563 |
+|  999  | koushik     | M      | 2004-12-26 | 701388612 | 87465839 |
++-------+-------------+--------+------------+-----------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student where Regno=123;
++-------+------------+--------+------------+-----------+----------+
+| Regno | name       | gender | dob        | mobileno  | emisregno|
++-------+------------+--------+------------+-----------+----------+
+|  123  | priya      | F      | 2005-05-29 | 944565599 | 26346282 |
++-------+------------+--------+------------+-----------+----------+
+1 row in set (0.01 sec)
+
+mysql> select * from employee where Regno between 123 and 734;
+ERROR 114 (42S0): Table 'student.employee' doesn't exist
+mysql> select * from student where Regno between 123 and 734;
++-------+------------+--------+------------+-----------+----------+
+| Regno | name       | gender | dob        | mobileno  | emisregno|
++-------+------------+--------+------------+-----------+----------+
+|  123  | priya      | F      | 2005-05-29 | 944565599 | 26346282 |
+|  718  | somu       | M      | 2006-04-05 | 944411718 | 76579543 |
+|  734  | mahesh     | M      | 2010-09-13 | 792738362 | 86363563 |
++-------+------------+--------+------------+-----------+----------+
+3 rows in set (0.01 sec)
+
+mysql> create table mark(regno int(6),name varchar(10), marks int(3));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc mark;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| regno | int(6)      | YES  |     | NULL    |       |
+| name  | varchar(10) | YES  |     | NULL    |       |
+| marks | int(3)      | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into mark values ('123','priya','90');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into mark values ('734','mahesh','98');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into mark values ('765','sandy','85');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from mark;
++-------+------------+-------+
+| regno | name       | marks |
++-------+------------+-------+
+|  123  | priya      |    90 |
+|  734  | mahesh     |    98 |
+|  765  | sandy      |    85 |
++-------+------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select avg(marks) from mark;
++------------+
+| avg(marks) |
++------------+
+|    91.0000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select max(marks) from mark;
++------------+
+| max(marks) |
++------------+
+|         98 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select min(marks) from mark;
++------------+
+| min(marks) |
++------------+
+|         85 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(marks) from mark;
++------------+
+| sum(marks) |
++------------+
+|        273 |
++------------+
+1 row in set (0.00 sec)
+mysql> select * from student where name LIKE '%AA';
++-------+------------+--------+------------+-----------+----------+
+| Regno | name       | gender | dob        | mobileno  | emis     |
++-------+------------+--------+------------+-----------+----------+
+|  123  | priya      | F      | 2005-05-29 | 944565599 | 26346282 |
++-------+------------+--------+------------+-----------+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from student where name LIKE 'VI%';
++-------+---------+--------+------------+----------+---------+
+| Regno | name    | gender | dob        | mobileno | emis    |
++-------+---------+--------+------------+----------+---------+
+|  734  | mahesh  | M      | 2010-09-13 | 792738362|86363563 |
++-------+---------+--------+------------+----------+---------+
+1 row in set (0.00 sec)
