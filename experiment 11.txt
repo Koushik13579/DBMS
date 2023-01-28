@@ -1,0 +1,61 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 38
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use faculty;
+Database changed
+mysql> DELIMITER //
+mysql>
+mysql> CREATE PROCEDURE test_mysql_while_loop()
+    -> BEGIN
+    -> DECLARE X INT;
+    -> DECLARE str  VARCHAR(255);
+    ->
+    -> SET x = 1;
+    -> SET str = '';
+    ->
+    -> WHILE x <=5 DO
+    -> SET str = CONCAT(str,x,',');
+    -> SET x =x + 1;
+    -> END WHILE;
+    ->
+    -> SELECT str;
+    -> END
+    -> //
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CALL test_mysql_while_loop() //
++------------+
+| str        |
++------------+
+| 1,2,3,4,5, |
++------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CREATE PROCEDURE dorepeat(p1 INT) BEGIN SET @X=0; REPEAT SET @x=@x+1; UNTIL @x>p1 END REPEAT; END//
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> CALL dorepeat(4001) //
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @x;
+    -> //
++------+
+| @x   |
++------+
+| 4002 |
++------+
+1 row in set (0.00 sec)
+
+mysql>
