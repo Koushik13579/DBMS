@@ -1,0 +1,37 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 64
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use collage;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_collage |
++-------------------+
+| javalab           |
+| myguests          |
++-------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc myguests;
++-----------+-----------------+------+-----+-------------------+-----------------------------+
+| Field     | Type            | Null | Key | Default           | Extra                       |
++-----------+-----------------+------+-----+-------------------+-----------------------------+
+| id        | int(6) unsigned | NO   | PRI | NULL              | auto_increment              |
+| firstname | varchar(30)     | NO   |     | NULL              |                             |
+| lastname  | varchar(30)     | NO   |     | NULL              |                             |
+| email     | varchar(50)     | YES  |     | NULL              |                             |
+| reg_date  | timestamp       | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++-----------+-----------------+------+-----+-------------------+-----------------------------+
+5 rows in set (0.01 sec)
+
+mysql>
