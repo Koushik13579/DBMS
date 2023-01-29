@@ -1,0 +1,32 @@
+mysql> use dataa;
+Database changed
+mysql> Create table Student_age(age INT, Name Varchar(35));
+Query OK, 0 rows affected (0.41 sec)
+
+mysql> DELIMITER //
+mysql> Create Trigger before_inser_studentage BEFORE INSERT ON student_age FOR EACH ROW
+    -> BEGIN
+    -> IF NEW.age < 0 THEN SET NEW.age = 0;
+    -> END IF;
+    -> END //
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> INSERT INTO Student_age(age, Name) values(30, 'Krishna');
+    -> INSERT INTO Student_age values(30, 'Krishn');
+    -> INSERT INTO Student_age(age, Name) values(-10, 'Naveen');
+    -> Select * from Student_age;
+    -> end//
+Query OK, 1 row affected (0.07 sec)
+
+Query OK, 1 row affected (0.13 sec)
+
+Query OK, 1 row affected (0.17 sec)
+
++------+---------+
+| age  | Name    |
++------+---------+
+|   30 | Krishna |
+|   30 | Krishna |
+|    0 | Naveen  |
++------+---------+
+3 rows in set (0.17 sec)
