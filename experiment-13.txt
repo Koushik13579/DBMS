@@ -1,0 +1,63 @@
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from details;
++-------+----------------+
+| regno | purchased_date |
++-------+----------------+
+|   129 | 2020-02-18     |
+|   178 | 2021-06-13     |
+|   130 | 2023-01-23     |
+|  1290 | 2022-04-24     |
+|  8960 | 2021-04-03     |
+|  7680 | 2021-05-17     |
++-------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> savepoint sp1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show savepoints;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'savepoints' at line 1
+mysql> delete from details where reg='129';
+ERROR 1054 (42S22): Unknown column 'reg' in 'where clause'
+mysql> delete from details where regno='129';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from details;
++-------+----------------+
+| regno | purchased_date |
++-------+----------------+
+|   178 | 2021-06-13     |
+|   130 | 2023-01-23     |
+|  1290 | 2022-04-24     |
+|  8960 | 2021-04-03     |
+|  7680 | 2021-05-17     |
++-------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> rollback to sp1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from details;
++-------+----------------+
+| regno | purchased_date |
++-------+----------------+
+|   129 | 2020-02-18     |
+|   178 | 2021-06-13     |
+|   130 | 2023-01-23     |
+|  1290 | 2022-04-24     |
+|  8960 | 2021-04-03     |
+|  7680 | 2021-05-17     |
++-------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> delete from details where reg='129';
+ERROR 1054 (42S22): Unknown column 'reg' in 'where clause'
+mysql> delete from details where regno='129';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> commi;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'commi' at line 1
+mysql> commit;
+Query OK, 0 rows affected (0.01 sec)
