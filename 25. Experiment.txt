@@ -1,0 +1,60 @@
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database stu_progress;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use stu_progress;
+Database changed
+mysql> create table stu_progress(stu_NO int(10), Stu_Name varchar(30), Subject varchar(40), marks int(20)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into stu_progress values(185, "Vishall", "Computer", 89);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stu_progress values(193, "Pranav", "DBMS", 76);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into stu_progress values(142, "Vinod", "Data Structure", 97);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from stu_progress;
++--------+----------+----------------+-------+
+| stu_NO | Stu_Name | Subject        | marks |
++--------+----------+----------------+-------+
+|    185 | Vishall  | Computer       |    89 |
+|    193 | Pranav   | DBMS           |    76 |
+|    142 | Vinod    | Data Structure |    97 |
++--------+----------+----------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table stu_progress
+    -> add Stu_Dept varchar(50) ;
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> insert into stu_progress values(153, "Deepak", "OS", 69, "AI");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from stu_progress;
++--------+----------+----------------+-------+----------+
+| stu_NO | Stu_Name | Subject        | marks | Stu_Dept |
++--------+----------+----------------+-------+----------+
+|    185 | Vishall  | Computer       |    89 | NULL     |
+|    193 | Pranav   | DBMS           |    76 | NULL     |
+|    142 | Vinod    | Data Structure |    97 | NULL     |
+|    153 | Deepak   | OS             |    69 | AI       |
++--------+----------+----------------+-------+----------+
+4 rows in set (0.00 sec)
+
+mysql>
