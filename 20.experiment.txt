@@ -1,0 +1,12 @@
+EXPERIMENT 20:
+
+mysql> use marks;
+Database changed
+mysql> show tables;
++-----------------+
+| Tables_in_marks |
++-----------------+
+| javalab         |
+| marks           |
++-----------------+
+2 rows in set (0.00 sec)
