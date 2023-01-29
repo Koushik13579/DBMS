@@ -1,0 +1,12 @@
+mysql>  CREATE USER nani@localhost IDENTIFIED BY 'jtp12345';
+Query OK, 0 rows affected (0.22 sec)
+
+mysql> SHOW GRANTS FOR naveen@localhost;
++-------------------------------------------------------------------------------------------------------------+
+| Grants for john@localhost                                                                                   |
++-------------------------------------------------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'nani'@'localhost' IDENTIFIED BY PASSWORD'*99DA742023CF5DFEE6DE3660DD38BA5DE7B1A25A'|
++-------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+mysql> REVOKE ALL, GRANT OPTION FROM nani@localhost;
+Query OK, 0 rows affected (0.00 sec)
